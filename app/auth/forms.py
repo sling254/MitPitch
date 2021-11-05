@@ -6,7 +6,7 @@ from ..models import User
 class LoginForm(FlaskForm):
     email = StringField('Your Email Address', validators=[Required(),Email()])
     password = PasswordField('Password',validators=[Required()])
-    remember = BooleanField('Remember Me!')
+    remember_me = BooleanField('Remember Me!')
     submit = SubmitField('Login')
 
 class RegForm(FlaskForm):

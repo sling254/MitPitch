@@ -8,10 +8,8 @@ from ..email import mail_message
 
 
 
-@auth.route('/login')
-def login():
-    
-    return render_template('auth/login.html')
+
+
 
 
 
