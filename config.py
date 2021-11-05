@@ -9,8 +9,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS=True
 
     DEBUG = True
-
-    
+    #Route to photos
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     #email configurations

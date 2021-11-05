@@ -14,6 +14,7 @@ login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 #Upload files
+photos = UploadSet('photos',IMAGES)
 
 #send mail
 mail = Mail()
@@ -36,6 +37,9 @@ def create_app(config_name):
     db.init_app(app)#databse
     login_manager.init_app(app)#login helper
     mail.init_app(app)#mail
+
+    # configure UploadSet
+    configure_uploads(app,photos)
 
      # setting config
  
