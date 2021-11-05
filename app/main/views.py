@@ -8,7 +8,7 @@ from .. import db, photos
 @main.route('/')
 def index():
 
-    return 'Hello world'
+    return render_template("base.html")
 
 
 @main.route('/user/<name>')
