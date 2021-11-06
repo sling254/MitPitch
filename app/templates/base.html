@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active"  href="#">Home</a>
+              <a class="nav-link active"  href="{{url_for('main.index')}}">Home</a>
             </li>
             {% if current_user.is_authenticated %}
             <li class="nav-item">
@@ -37,6 +37,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('main.profile',name=current_user.username)}}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-primary"><a class="nav-link" href="{{url_for('main.new_pitch')}}">PITCH NOW</a></button>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></li>
