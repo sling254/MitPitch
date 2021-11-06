@@ -7,9 +7,29 @@ from .. import db, photos
 
 @main.route('/')
 def index():
+    pitches = Pitch.query.all()
+    technology = Pitch.query.filter_by(category = 'Technology').all() 
+    business = Pitch.query.filter_by(category = 'Business').all()
+    programming = Pitch.query.filter_by(category = 'Programming').all()
+    religion = Pitch.query.filter_by(category = 'Religion').all()
+    sports = Pitch.query.filter_by(category = 'Sports').all()
+    social = Pitch.query.filter_by(category = 'Social').all()
+    return render_template('index.html', pitches = pitches, technology = technology,business = business,programming= programming,religion = religion,sports = sports,social = social)
 
-    return render_template("base.html")
-
+@main.route('/create_new', methods = ['POST','GET'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        user_id = current_user
+        new_pitch_object = Pitch(post=post,user_id=current_user._get_current_object().id,category=category,title=title)
+        new_pitch_object.save_p()
+        return redirect(url_for('main.index'))
+        
+    return render_template('new_pitch.html', form = form)
 
 @main.route('/user/<name>')
 def profile(name):
@@ -30,7 +50,8 @@ def updateprofile(name):
         abort(404)
     if form.validate_on_submit():
         user.bio = form.bio.data
-        user.save_u()
+        db.session.add(user)
+        db.session.commit()
         return redirect(url_for('.profile',name = name))
     return render_template('profile/update.html',form =form)
 
