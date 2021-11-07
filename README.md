@@ -5,6 +5,8 @@ users can leave a comment like or dislike the pitch. A user is also able to see 
 
 ### Check out the website :stars: 
 
+https://minutopitch.herokuapp.com/
+
 
 
 # Project Setup Instructions
